@@ -73,19 +73,6 @@
             <artifactId>jackson-databind</artifactId>
         </dependency>
 
-        <!-- common utilities -->
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
-        </dependency>
 
         <!-- logging -->
 
@@ -168,10 +155,6 @@
 
     <properties>
 
-
-        <!-- commons and utils -->
-        <commons-lang3.version>3.5</commons-lang3.version>
-        <guava.version>21.0</guava.version>
 
         <!-- maven plugins -->
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>

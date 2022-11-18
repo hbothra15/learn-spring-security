@@ -23,9 +23,13 @@
         <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-
+        <!-- validation -->
         <validation-api.version>1.1.0.Final</validation-api.version>
         <hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
+        <!-- commons and utils -->
+        <commons-lang3.version>3.5</commons-lang3.version>
+        <guava.version>21.0</guava.version>
+        <!-- Spring boot version -->
         <spring.boot.version>2.7.5</spring.boot.version>
     </properties>
     <dependencyManagement>
@@ -59,6 +63,17 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
+        </dependency>
+        <!-- common utilities -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
         </dependency>
     </dependencies>
 
