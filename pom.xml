@@ -1,24 +1,163 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<description>The &quot;Learn Spring Security&quot; Course
-Module  1</description>
-	<name>learn-spring-security</name>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <description>The &quot;Learn Spring Security&quot; Course
+        Module 1
+    </description>
+    <name>learn-spring-security</name>
 
-	<groupId>com.baeldung.m1</groupId>
-	<artifactId>learn-spring-security-m1</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
-	<packaging>pom</packaging>
+    <groupId>com.baeldung.m1</groupId>
+    <artifactId>learn-spring-security-m1</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-	<modules>
-		<module>m1-lesson1</module>
-		<module>m1-lesson2</module>
-		<module>m1-lesson3</module>
-		<module>m1-lesson4</module>
-		<module>m1-lesson5</module>
-		<module>m1-lesson6</module>
-		<module>m1-lesson6-noboot</module>
-		<module>m1-lesson7</module>
-	</modules>
 
+    <properties>
+        <!-- non-dependencies -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Java version -->
+        <java.version>1.8</java.version>
+        <!-- maven plugins -->
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+        <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
+        <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
+        <maven-war-plugin.vesion>3.1.0</maven-war-plugin.vesion>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <!-- validation -->
+        <validation-api.version>2.0.2</validation-api.version>
+        <hibernate-validator.version>7.0.5.Final</hibernate-validator.version>
+        <!-- commons and utils -->
+        <commons-lang3.version>3.5</commons-lang3.version>
+        <guava.version>21.0</guava.version>
+        <!-- Spring boot version -->
+        <spring.boot.version>2.7.5</spring.boot.version>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.validation</groupId>
+                <artifactId>jakarta.validation-api</artifactId>
+                <version>${validation-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- validation -->
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+        <!-- common utilities -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <!-- test scoped -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <!-- <scope>runtime</scope> -->
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <!-- <scope>runtime</scope> --> <!-- some spring dependencies need to compile against jcl -->
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+        </dependency>
+        <!-- marshalling -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <configuration>
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <modules>
+        <module>m1-lesson1</module>
+        <module>m1-lesson2</module>
+        <module>m1-lesson3</module>
+        <module>m1-lesson4</module>
+        <module>m1-lesson5</module>
+        <module>m1-lesson6</module>
+        <module>m1-lesson6-noboot</module>
+        <module>m1-lesson7</module>
+    </modules>
+
+    <developers>
+        <developer>
+            <email>eugen@baeldung.com</email>
+            <name>Eugen Paraschiv</name>
+            <url>https://github.com/eugenp</url>
+            <id>eugenp</id>
+        </developer>
+    </developers>
 </project>

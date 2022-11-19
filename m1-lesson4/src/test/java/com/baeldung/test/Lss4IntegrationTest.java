@@ -1,5 +1,7 @@
 package com.baeldung.test;
 
+import static org.junit.Assert.assertTrue;
+
 import com.baeldung.lss.spring.LssApp4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +15,6 @@ public class Lss4IntegrationTest {
 
     @Test
     public void whenLoadApplication_thenSuccess() {
-
+        assertTrue(true);
     }
 }
