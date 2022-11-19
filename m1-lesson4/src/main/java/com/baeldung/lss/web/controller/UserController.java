@@ -26,8 +26,6 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-    // API
-
     @GetMapping
     public ModelAndView list() {
         Iterable<User> users = this.userRepository.findAll();

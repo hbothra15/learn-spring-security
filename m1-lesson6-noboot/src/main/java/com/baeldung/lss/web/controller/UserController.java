@@ -58,8 +58,6 @@ public class UserController {
         return new ModelAndView(TL_FORM, "user", user);
     }
 
-    // the form
-
     @GetMapping(params = "form")
     public String createForm(@ModelAttribute User user) {
         return TL_FORM;

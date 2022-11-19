@@ -48,8 +48,7 @@
         </dependency>
         <dependency>
             <groupId>org.thymeleaf</groupId>
-            <artifactId>thymeleaf-spring4</artifactId>
-            <version>${thymeleaf.version}</version>
+            <artifactId>thymeleaf-spring5</artifactId>
         </dependency>
         <dependency>
             <groupId>nz.net.ultraq.thymeleaf</groupId>
@@ -81,8 +80,8 @@
 
     <properties>
         <!-- web -->
-        <thymeleaf.version>3.0.6.RELEASE</thymeleaf.version>
-        <thymeleaf-layout-dialect.version>2.2.2</thymeleaf-layout-dialect.version>
+        <thymeleaf.version>3.1.0.RELEASE</thymeleaf.version>
+        <thymeleaf-layout-dialect.version>3.1.0</thymeleaf-layout-dialect.version>
     </properties>
 
 </project>

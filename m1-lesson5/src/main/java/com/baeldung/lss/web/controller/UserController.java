@@ -58,8 +58,6 @@ public class UserController {
         return new ModelAndView(USER_FORM, "user", user);
     }
 
-    // the form
-
     @GetMapping(params = "form")
     public String createForm(@ModelAttribute User user) {
         return USER_FORM;

@@ -54,7 +54,7 @@ public class UserController {
 
     @RequestMapping("foo")
     public String foo() {
-        throw new InternalError("Expected exception in controller");
+        throw new RuntimeException("Expected exception in controller");
     }
 
     @GetMapping(value = "delete/{id}")

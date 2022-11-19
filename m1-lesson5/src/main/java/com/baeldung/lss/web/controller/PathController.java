@@ -1,12 +1,12 @@
 package com.baeldung.lss.web.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class PathController {
 
-    @RequestMapping("/login")
+    @GetMapping("/login")
     public String list() {
         return "loginPage";
     }
