@@ -3,7 +3,6 @@ package com.baeldung.lss.web.controller;
 import com.baeldung.lss.persistence.UserRepository;
 import com.baeldung.lss.web.model.User;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,18 +22,17 @@ public class UserController {
     public static final String TL_FORM = "tl/form";
     private final UserRepository userRepository;
 
-    @Autowired
     public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    @RequestMapping
+    @GetMapping
     public ModelAndView list() {
         Iterable<User> users = this.userRepository.findAll();
         return new ModelAndView("tl/list", "users", users);
     }
 
-    @RequestMapping("{id}")
+    @GetMapping("{id}")
     public ModelAndView view(@PathVariable("id") User user) {
         return new ModelAndView("tl/view", "user", user);
     }
@@ -49,7 +47,7 @@ public class UserController {
         return new ModelAndView("redirect:/user/{user.id}", "user.id", user.getId());
     }
 
-    @RequestMapping(value = "delete/{id}")
+    @GetMapping(value = "delete/{id}")
     public ModelAndView delete(@PathVariable("id") Long id) {
         this.userRepository.deleteUser(id);
         return new ModelAndView("redirect:/user/");
@@ -61,7 +59,7 @@ public class UserController {
     }
 
     // the form
-    @GetMapping("form")
+    @GetMapping(params = "form")
     public String createForm(@ModelAttribute User user) {
         return TL_FORM;
     }

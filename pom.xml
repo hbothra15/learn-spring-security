@@ -24,8 +24,8 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <!-- validation -->
-        <validation-api.version>1.1.0.Final</validation-api.version>
-        <hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
+        <validation-api.version>2.0.2</validation-api.version>
+        <hibernate-validator.version>7.0.5.Final</hibernate-validator.version>
         <!-- commons and utils -->
         <commons-lang3.version>3.5</commons-lang3.version>
         <guava.version>21.0</guava.version>
@@ -42,12 +42,12 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>javax.validation</groupId>
-                <artifactId>validation-api</artifactId>
+                <groupId>jakarta.validation</groupId>
+                <artifactId>jakarta.validation-api</artifactId>
                 <version>${validation-api.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.hibernate</groupId>
+                <groupId>org.hibernate.validator</groupId>
                 <artifactId>hibernate-validator</artifactId>
                 <version>${hibernate-validator.version}</version>
             </dependency>
@@ -57,11 +57,11 @@
     <dependencies>
         <!-- validation -->
         <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
         </dependency>
         <!-- common utilities -->

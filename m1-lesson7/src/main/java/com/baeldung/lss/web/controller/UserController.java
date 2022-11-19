@@ -27,13 +27,13 @@ public class UserController {
 
     //
 
-    @RequestMapping
+    @GetMapping
     public ModelAndView list() {
         Iterable<User> users = this.userRepository.findAll();
         return new ModelAndView("tl/list", "users", users);
     }
 
-    @RequestMapping("{id}")
+    @GetMapping("{id}")
     public ModelAndView view(@PathVariable("id") User user) {
         return new ModelAndView("tl/view", "user", user);
     }
@@ -48,9 +48,10 @@ public class UserController {
         return new ModelAndView("redirect:/user/{user.id}", "user.id", user.getId());
     }
 
-    @RequestMapping(value = "delete/{id}")
+    @GetMapping(value = "delete/{id}")
     public ModelAndView delete(@PathVariable("id") Long id) {
-    	this.userRepository.findById(id).ifPresent(user -> this.userRepository.delete(user));
+        this.userRepository.findById(id)
+                           .ifPresent(user -> this.userRepository.delete(user));
         return new ModelAndView("redirect:/user/");
     }
 
@@ -61,7 +62,7 @@ public class UserController {
 
     // the form
 
-    @GetMapping("form")
+    @GetMapping(params = "form")
     public String createForm(@ModelAttribute User user) {
         return TL_FORM;
     }

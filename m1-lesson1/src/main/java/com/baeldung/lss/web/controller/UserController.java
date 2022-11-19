@@ -3,7 +3,6 @@ package com.baeldung.lss.web.controller;
 import com.baeldung.lss.persistence.UserRepository;
 import com.baeldung.lss.web.model.User;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,23 +22,22 @@ public class UserController {
     private static final String USER_FORM = "users/form";
     private final UserRepository userRepository;
 
-    @Autowired
     public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    @RequestMapping
+    @GetMapping
     public ModelAndView list() {
         Iterable<User> users = this.userRepository.findAll();
         return new ModelAndView("users/list", "users", users);
     }
 
-    @RequestMapping("{id}")
+    @GetMapping("{id}")
     public ModelAndView view(@PathVariable("id") User user) {
         return new ModelAndView("users/view", "user", user);
     }
 
-    @GetMapping("form")
+    @GetMapping(params = "form")
     public String createForm(@ModelAttribute User user) {
         return USER_FORM;
     }
@@ -59,7 +57,7 @@ public class UserController {
         throw new InternalError("Expected exception in controller");
     }
 
-    @RequestMapping(value = "delete/{id}")
+    @GetMapping(value = "delete/{id}")
     public ModelAndView delete(@PathVariable("id") Long id) {
         this.userRepository.deleteUser(id);
         return new ModelAndView("redirect:/");
