@@ -1,5 +1,7 @@
 package com.baeldung.test;
 
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,6 +16,6 @@ public class Lss6IntegrationTest {
 
     @Test
     public void whenLoadApplication_thenSuccess() {
-
+        assertTrue(true);
     }
 }

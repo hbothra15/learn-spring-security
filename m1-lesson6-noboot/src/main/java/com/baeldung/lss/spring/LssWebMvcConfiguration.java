@@ -28,7 +28,6 @@ public class LssWebMvcConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("loginPage");
-
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
     
@@ -70,13 +69,7 @@ public class LssWebMvcConfiguration extends WebMvcConfigurerAdapter {
     
     @Override
     public void addFormatters(FormatterRegistry registry) {
-        registry.addConverter(new  Converter<String, User>() {
-            @Override
-            public User convert(String id) {
-                return userRepository().findUser(Long.valueOf(id));
-            }
-        });
-       
+        registry.addConverter((Converter<String, User>) id -> userRepository().findUser(Long.valueOf(id)));
     }
 
 }

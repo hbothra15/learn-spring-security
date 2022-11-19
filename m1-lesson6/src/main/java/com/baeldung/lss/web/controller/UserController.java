@@ -6,10 +6,11 @@ import com.baeldung.lss.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -19,6 +20,7 @@ import javax.validation.Valid;
 @RequestMapping("/user")
 public class UserController {
 
+    public static final String TL_FORM = "tl/form";
     private final UserRepository userRepository;
 
     @Autowired
@@ -37,10 +39,10 @@ public class UserController {
         return new ModelAndView("tl/view", "user", user);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public ModelAndView create(@Valid User user, BindingResult result, RedirectAttributes redirect) {
         if (result.hasErrors()) {
-            return new ModelAndView("tl/form", "formErrors", result.getAllErrors());
+            return new ModelAndView(TL_FORM, "formErrors", result.getAllErrors());
         }
         user = this.userRepository.save(user);
         redirect.addFlashAttribute("globalMessage", "Successfully created a new user");
@@ -53,15 +55,15 @@ public class UserController {
         return new ModelAndView("redirect:/user/");
     }
 
-    @RequestMapping(value = "modify/{id}", method = RequestMethod.GET)
+    @GetMapping("modify/{id}")
     public ModelAndView modifyForm(@PathVariable("id") User user) {
-        return new ModelAndView("tl/form", "user", user);
+        return new ModelAndView(TL_FORM, "user", user);
     }
 
     // the form
-    @RequestMapping(params = "form", method = RequestMethod.GET)
+    @GetMapping("form")
     public String createForm(@ModelAttribute User user) {
-        return "tl/form";
+        return TL_FORM;
     }
 
 }
