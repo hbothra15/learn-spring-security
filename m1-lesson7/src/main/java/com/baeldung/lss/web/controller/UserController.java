@@ -25,8 +25,6 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    //
-
     @GetMapping
     public ModelAndView list() {
         Iterable<User> users = this.userRepository.findAll();
